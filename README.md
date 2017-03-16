@@ -8,7 +8,7 @@ source of data: This map was created using data from an online petition here: ht
 
 cleaning data: I just copied and pasted the signatures into a csv and proceeded to clean the data by hand. This was time consuming given that there was no standardized format for entering signatures. Once I had separated names from institutions I ran the file through a geocoding api and sorted results to standardize institution names. For all but the last 87 signatories, the results were then reverse geocoded to get standardized names for the institutions being coded.
 
-Some signatures identified no institutional affiliation. Some were duplicates. Some used acronyms that proved too ambiguous to geocode, as the enginewould erroneously default to the wrong part of the world. I was able to resolve some of these laboriously line by line; others were excluded only for the sake of time. I also excluded institutions like hospitals without a clear academic reference. In the end, I had XXXX signatures out of YYYY original.
+Some signatures identified no institutional affiliation. Some were duplicates. Some used acronyms that proved too ambiguous to geocode, as the enginewould erroneously default to the wrong part of the world. I was able to resolve some of these laboriously line by line; others were excluded only for the sake of time. I also excluded institutions like hospitals without a clear academic reference. In the end, I had ~5389 signatures out of ~5755 original entries.
 
 extracting summary data: Not yet conversant with PostGIS and VPSs, I ran the resulting files through python codes to generate dictionaries and counts of institutions and geographic units like countries and provinces.
 
