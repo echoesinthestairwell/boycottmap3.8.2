@@ -20,7 +20,7 @@
             margin: 0;
         }
         </style>
-        <title></title>
+        <title>Petition Signatories Travel Ban Boycott</title>
     </head>
     <h2>  Boycott International Conferences in US<a href="https://docs.google.com/forms/d/e/1FAIpQLSeNN_2HHREt1h-dm_CgWpFHw8NDPGLCkOwB4lLRFtKFJqI25w/viewform"> Petition </a>Signatories: Against the Travel Ban<small> (current as of 2017:03:10)</small></h2>
     <body>
@@ -69,6 +69,13 @@
         map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
         L.control.locate().addTo(map);
         var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
         function setBounds() {
         }
         function geoJson2heat(geojson, weight) {
