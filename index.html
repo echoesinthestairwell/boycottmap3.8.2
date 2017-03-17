@@ -6,7 +6,7 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" /> /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css" />
+        <link rel="stylesheet" href="css/leaflet.css" /><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css" />
         <link rel="stylesheet" type="text/css" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/MarkerCluster.css" />
         <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
@@ -20,14 +20,14 @@
             margin: 0;
         }
         </style>
-        <title>Petition Signatories Travel Ban Boycott</title>
+        <title>Travel Ban Boycott Petition Signatories</title>
     </head>
     <h2>  Boycott International Conferences in US<a href="https://docs.google.com/forms/d/e/1FAIpQLSeNN_2HHREt1h-dm_CgWpFHw8NDPGLCkOwB4lLRFtKFJqI25w/viewform"> Petition </a>Signatories: Against the Travel Ban<small> (current as of 2017:03:10)</small></h2>
     <body>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
         <script src="js/leaflet-heat.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/OSMBuildings-Leaflet.js"></script>
@@ -37,9 +37,9 @@
         <script src="js/leaflet.markercluster.js"></script>
         <script src="js/leaflet-search.js"></script>
         <script src="data/country0.js"></script>
-        <script src="data/countrysubunit1.js"></script>
-        <script src="data/countrydisputed2.js"></script>
-        <script src="data/stateprovince3.js"></script>
+        <script src="data/countrydisputed1.js"></script>
+        <script src="data/countrysubunits2.js"></script>
+        <script src="data/statesprovinces3.js"></script>
         <script src="data/institutions4.js"></script>
         <script>
         var highlightLayer;
@@ -64,16 +64,14 @@
         });
         var map = L.map('map', {
             zoomControl:true, maxZoom:27, minZoom:1
-        }).fitBounds([[41.384275702,-24.4981228331],[59.9773428553,18.1067559991]]);
+        }).fitBounds([[23.559498937,-75.3596514427],[83.7716034732,82.1181604211]]);
         var hash = new L.Hash(map);
         map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
         L.control.locate().addTo(map);
         var bounds_group = new L.featureGroup([]);
-        function setBounds() {
-        }
-        var basemap0 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-            maxZoom: 28
+            maxZoom: 27
         });
         basemap0.addTo(map);
         function setBounds() {
@@ -96,13 +94,13 @@
                 mouseover: highlightFeature,
             });
             var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2"><strong>country</strong><br />' + (feature.properties['name_long'] !== null ? Autolinker.link(String(feature.properties['name_long'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">signatories</th>\
-                        <td>' + (feature.properties['newcntint'] !== null ? Autolinker.link(String(feature.properties['newcntint'])) : '') + '</td>\
-                    </tr>\
+                        <tr>\
+                            ß<td colspan="2"><strong>country_subunit</strong><br />' + (feature.properties['name_long'] !== null ? Autolinker.link(String(feature.properties['name_long'])) : '') + '</td>\
+                        </tr>\
+                        <tr>\
+                            <th scope="row">signatories</th>\
+                            <td>' + (feature.properties['newcntint'] !== null ? Autolinker.link(String(feature.properties['newcntint'])) : '') + '</td>\
+                        </tr>\
                 </table>';
             layer.bindPopup(popupContent);
         }
@@ -118,23 +116,10 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(250,251,251,1.0)',
-            }
-            }
-            if (feature.properties['newcntint'] >= 1.000000 && feature.properties['newcntint'] <= 17.000000 ) {
-                return {
-                pane: 'pane_country0',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fillOpacity: 1,
                 fillColor: 'rgba(247,251,255,1.0)',
             }
             }
-            if (feature.properties['newcntint'] >= 17.000000 && feature.properties['newcntint'] <= 66.000000 ) {
+            if (feature.properties['newcntint'] >= 0.000000 && feature.properties['newcntint'] <= 18.000000 ) {
                 return {
                 pane: 'pane_country0',
                 opacity: 1,
@@ -144,10 +129,10 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(209,227,243,1.0)',
+                fillColor: 'rgba(216,231,245,1.0)',
             }
             }
-            if (feature.properties['newcntint'] >= 66.000000 && feature.properties['newcntint'] <= 146.000000 ) {
+            if (feature.properties['newcntint'] >= 18.000000 && feature.properties['newcntint'] <= 64.000000 ) {
                 return {
                 pane: 'pane_country0',
                 opacity: 1,
@@ -157,10 +142,10 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(154,200,225,1.0)',
+                fillColor: 'rgba(176,210,232,1.0)',
             }
             }
-            if (feature.properties['newcntint'] >= 146.000000 && feature.properties['newcntint'] <= 247.000000 ) {
+            if (feature.properties['newcntint'] >= 64.000000 && feature.properties['newcntint'] <= 149.000000 ) {
                 return {
                 pane: 'pane_country0',
                 opacity: 1,
@@ -170,10 +155,10 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(82,157,204,1.0)',
+                fillColor: 'rgba(115,179,216,1.0)',
             }
             }
-            if (feature.properties['newcntint'] >= 247.000000 && feature.properties['newcntint'] <= 1282.000000 ) {
+            if (feature.properties['newcntint'] >= 149.000000 && feature.properties['newcntint'] <= 244.000000 ) {
                 return {
                 pane: 'pane_country0',
                 opacity: 1,
@@ -183,10 +168,10 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(28,108,177,1.0)',
+                fillColor: 'rgba(62,142,196,1.0)',
             }
             }
-            if (feature.properties['newcntint'] >= 1282.000000 && feature.properties['newcntint'] <= 1626.000000 ) {
+            if (feature.properties['newcntint'] >= 244.000000 && feature.properties['newcntint'] <= 1199.000000 ) {
                 return {
                 pane: 'pane_country0',
                 opacity: 1,
@@ -196,7 +181,20 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(8,48,125,1.0)',
+                fillColor: 'rgba(21,99,170,1.0)',
+            }
+            }
+            if (feature.properties['newcntint'] >= 1199.000000 && feature.properties['newcntint'] <= 1700.000000 ) {
+                return {
+                pane: 'pane_country0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 1,
+                fillColor: 'rgba(8,48,107,1.0)',
             }
             }
         }
@@ -211,134 +209,10 @@
     });
         bounds_group.addLayer(layer_country0);
         map.addLayer(layer_country0);
-        function pop_countrysubunit1(feature, layer) {
+        function pop_countrydisputed1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
-                    layer.setStyle(style_countrysubunit1(feature));
-
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2"><strong>country_subunit</strong><br />' + (feature.properties['name_long'] !== null ? Autolinker.link(String(feature.properties['name_long'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">signatories</th>\
-                        <td>' + (feature.properties['newcntint'] !== null ? Autolinker.link(String(feature.properties['newcntint'])) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent);
-        }
-
-        function style_countrysubunit1(feature) {
-            if (feature.properties['newcntint'] >= 0.000000 && feature.properties['newcntint'] <= 0.000000 ) {
-                return {
-                pane: 'pane_countrysubunit1',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fillOpacity: 1,
-                fillColor: 'rgba(252,254,255,1.0)',
-            }
-            }
-            if (feature.properties['newcntint'] >= 1.000000 && feature.properties['newcntint'] <= 17.000000 ) {
-                return {
-                pane: 'pane_countrysubunit1',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fillOpacity: 1,
-                fillColor: 'rgba(247,251,255,1.0)',
-            }
-            }
-            if (feature.properties['newcntint'] >= 17.000000 && feature.properties['newcntint'] <= 66.000000 ) {
-                return {
-                pane: 'pane_countrysubunit1',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fillOpacity: 1,
-                fillColor: 'rgba(209,227,243,1.0)',
-            }
-            }
-            if (feature.properties['newcntint'] >= 66.000000 && feature.properties['newcntint'] <= 146.000000 ) {
-                return {
-                pane: 'pane_countrysubunit1',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fillOpacity: 1,
-                fillColor: 'rgba(154,200,225,1.0)',
-            }
-            }
-            if (feature.properties['newcntint'] >= 146.000000 && feature.properties['newcntint'] <= 247.000000 ) {
-                return {
-                pane: 'pane_countrysubunit1',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fillOpacity: 1,
-                fillColor: 'rgba(82,157,204,1.0)',
-            }
-            }
-            if (feature.properties['newcntint'] >= 247.000000 && feature.properties['newcntint'] <= 1282.000000 ) {
-                return {
-                pane: 'pane_countrysubunit1',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fillOpacity: 1,
-                fillColor: 'rgba(28,108,177,1.0)',
-            }
-            }
-            if (feature.properties['newcntint'] >= 1282.000000 && feature.properties['newcntint'] <= 1626.000000 ) {
-                return {
-                pane: 'pane_countrysubunit1',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fillOpacity: 1,
-                fillColor: 'rgba(8,48,107,1.0)',
-            }
-            }
-        }
-        map.createPane('pane_countrysubunit1');
-        map.getPane('pane_countrysubunit1').style.zIndex = 601;
-        map.getPane('pane_countrysubunit1').style['mix-blend-mode'] = 'normal';
-    var layer_countrysubunit1 = new L.geoJson(json_countrysubunit1, {
-        attribution: '<a href=""></a>',
-        pane: 'pane_countrysubunit1',
-        onEachFeature: pop_countrysubunit1,
-        style: style_countrysubunit1
-    });
-        bounds_group.addLayer(layer_countrysubunit1);
-        map.addLayer(layer_countrysubunit1);
-        function pop_countrydisputed2(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    layer.setStyle(style_countrydisputed2(feature));
+                    layer.setStyle(style_countrydisputed1(feature));
 
                 },
                 mouseover: highlightFeature,
@@ -355,9 +229,9 @@
             layer.bindPopup(popupContent);
         }
 
-        function style_countrydisputed2() {
+        function style_countrydisputed1() {
             return {
-                pane: 'pane_countrydisputed2',
+                pane: 'pane_countrydisputed1',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -365,24 +239,148 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(243,243,243,1.0)',
+                fillColor: 'rgba(233,233,233,1.0)',
             }
         }
-        map.createPane('pane_countrydisputed2');
-        map.getPane('pane_countrydisputed2').style.zIndex = 602;
-        map.getPane('pane_countrydisputed2').style['mix-blend-mode'] = 'normal';
-    var layer_countrydisputed2 = new L.geoJson(json_countrydisputed2, {
+        map.createPane('pane_countrydisputed1');
+        map.getPane('pane_countrydisputed1').style.zIndex = 601;
+        map.getPane('pane_countrydisputed1').style['mix-blend-mode'] = 'normal';
+    var layer_countrydisputed1 = new L.geoJson(json_countrydisputed1, {
         attribution: '<a href=""></a>',
-        pane: 'pane_countrydisputed2',
-        onEachFeature: pop_countrydisputed2,
-        style: style_countrydisputed2
+        pane: 'pane_countrydisputed1',
+        onEachFeature: pop_countrydisputed1,
+        style: style_countrydisputed1
     });
-        bounds_group.addLayer(layer_countrydisputed2);
-        map.addLayer(layer_countrydisputed2);
-        function pop_stateprovince3(feature, layer) {
+        bounds_group.addLayer(layer_countrydisputed1);
+        map.addLayer(layer_countrydisputed1);
+        function pop_countrysubunits2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
-                    layer.setStyle(style_stateprovince3(feature));
+                    layer.setStyle(style_countrysubunits2(feature));
+
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                        <tr>\
+                            <td colspan="2"><strong>country_subunit</strong><br />' + (feature.properties['name_long'] !== null ? Autolinker.link(String(feature.properties['name_long'])) : '') + '</td>\
+                        </tr>\
+                        <tr>\
+                            <th scope="row">signatories</th>\
+                            <td>' + (feature.properties['newcntint'] !== null ? Autolinker.link(String(feature.properties['newcntint'])) : '') + '</td>\
+                        </tr>\
+                </table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function style_countrysubunits2(feature) {
+            if (feature.properties['newcntint'] >= 0.000000 && feature.properties['newcntint'] <= 0.000000 ) {
+                return {
+                pane: 'pane_countrysubunits2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 1,
+                fillColor: 'rgba(247,251,255,1.0)',
+            }
+            }
+            if (feature.properties['newcntint'] >= 0.000000 && feature.properties['newcntint'] <= 18.000000 ) {
+                return {
+                pane: 'pane_countrysubunits2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 1,
+                fillColor: 'rgba(216,231,245,1.0)',
+            }
+            }
+            if (feature.properties['newcntint'] >= 18.000000 && feature.properties['newcntint'] <= 64.000000 ) {
+                return {
+                pane: 'pane_countrysubunits2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 1,
+                fillColor: 'rgba(176,210,232,1.0)',
+            }
+            }
+            if (feature.properties['newcntint'] >= 64.000000 && feature.properties['newcntint'] <= 149.000000 ) {
+                return {
+                pane: 'pane_countrysubunits2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 1,
+                fillColor: 'rgba(115,179,216,1.0)',
+            }
+            }
+            if (feature.properties['newcntint'] >= 149.000000 && feature.properties['newcntint'] <= 244.000000 ) {
+                return {
+                pane: 'pane_countrysubunits2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 1,
+                fillColor: 'rgba(62,142,196,1.0)',
+            }
+            }
+            if (feature.properties['newcntint'] >= 244.000000 && feature.properties['newcntint'] <= 1199.000000 ) {
+                return {
+                pane: 'pane_countrysubunits2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 1,
+                fillColor: 'rgba(21,99,170,1.0)',
+            }
+            }
+            if (feature.properties['newcntint'] >= 1199.000000 && feature.properties['newcntint'] <= 1700.000000 ) {
+                return {
+                pane: 'pane_countrysubunits2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 1,
+                fillColor: 'rgba(8,48,107,1.0)',
+            }
+            }
+        }
+        map.createPane('pane_countrysubunits2');
+        map.getPane('pane_countrysubunits2').style.zIndex = 602;
+        map.getPane('pane_countrysubunits2').style['mix-blend-mode'] = 'normal';
+    var layer_countrysubunits2 = new L.geoJson(json_countrysubunits2, {
+        attribution: '<a href=""></a>',
+        pane: 'pane_countrysubunits2',
+        onEachFeature: pop_countrysubunits2,
+        style: style_countrysubunits2
+    });
+        bounds_group.addLayer(layer_countrysubunits2);
+        map.addLayer(layer_countrysubunits2);
+        function pop_statesprovinces3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    layer.setStyle(style_statesprovinces3(feature));
 
                 },
                 mouseover: highlightFeature,
@@ -399,23 +397,10 @@
             layer.bindPopup(popupContent);
         }
 
-        function style_stateprovince3(feature) {
+        function style_statesprovinces3(feature) {
             if (feature.properties['newcntint'] >= 0.000000 && feature.properties['newcntint'] <= 0.000000 ) {
                 return {
-                pane: 'pane_stateprovince3',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fillOpacity: 1,
-                fillColor: 'rgba(252,254,255,1.0)',
-            }
-            }
-            if (feature.properties['newcntint'] >= 1.000000 && feature.properties['newcntint'] <= 17.000000 ) {
-                return {
-                pane: 'pane_stateprovince3',
+                pane: 'pane_statesprovinces3',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -426,9 +411,9 @@
                 fillColor: 'rgba(247,251,255,1.0)',
             }
             }
-            if (feature.properties['newcntint'] >= 17.000000 && feature.properties['newcntint'] <= 66.000000 ) {
+            if (feature.properties['newcntint'] >= 0.000000 && feature.properties['newcntint'] <= 18.000000 ) {
                 return {
-                pane: 'pane_stateprovince3',
+                pane: 'pane_statesprovinces3',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -436,12 +421,12 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(209,227,243,1.0)',
+                fillColor: 'rgba(216,231,245,1.0)',
             }
             }
-            if (feature.properties['newcntint'] >= 66.000000 && feature.properties['newcntint'] <= 146.000000 ) {
+            if (feature.properties['newcntint'] >= 18.000000 && feature.properties['newcntint'] <= 64.000000 ) {
                 return {
-                pane: 'pane_stateprovince3',
+                pane: 'pane_statesprovinces3',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -449,12 +434,12 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(154,200,225,1.0)',
+                fillColor: 'rgba(176,210,232,1.0)',
             }
             }
-            if (feature.properties['newcntint'] >= 146.000000 && feature.properties['newcntint'] <= 247.000000 ) {
+            if (feature.properties['newcntint'] >= 64.000000 && feature.properties['newcntint'] <= 149.000000 ) {
                 return {
-                pane: 'pane_stateprovince3',
+                pane: 'pane_statesprovinces3',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -462,12 +447,12 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(82,157,204,1.0)',
+                fillColor: 'rgba(115,179,216,1.0)',
             }
             }
-            if (feature.properties['newcntint'] >= 247.000000 && feature.properties['newcntint'] <= 1282.000000 ) {
+            if (feature.properties['newcntint'] >= 149.000000 && feature.properties['newcntint'] <= 244.000000 ) {
                 return {
-                pane: 'pane_stateprovince3',
+                pane: 'pane_statesprovinces3',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -475,12 +460,25 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fillOpacity: 1,
-                fillColor: 'rgba(28,108,177,1.0)',
+                fillColor: 'rgba(62,142,196,1.0)',
             }
             }
-            if (feature.properties['newcntint'] >= 1282.000000 && feature.properties['newcntint'] <= 1626.000000 ) {
+            if (feature.properties['newcntint'] >= 244.000000 && feature.properties['newcntint'] <= 1199.000000 ) {
                 return {
-                pane: 'pane_stateprovince3',
+                pane: 'pane_statesprovinces3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 1,
+                fillColor: 'rgba(21,99,170,1.0)',
+            }
+            }
+            if (feature.properties['newcntint'] >= 1199.000000 && feature.properties['newcntint'] <= 1700.000000 ) {
+                return {
+                pane: 'pane_statesprovinces3',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -492,17 +490,17 @@
             }
             }
         }
-        map.createPane('pane_stateprovince3');
-        map.getPane('pane_stateprovince3').style.zIndex = 603;
-        map.getPane('pane_stateprovince3').style['mix-blend-mode'] = 'normal';
-    var layer_stateprovince3 = new L.geoJson(json_stateprovince3, {
+        map.createPane('pane_statesprovinces3');
+        map.getPane('pane_statesprovinces3').style.zIndex = 603;
+        map.getPane('pane_statesprovinces3').style['mix-blend-mode'] = 'normal';
+    var layer_statesprovinces3 = new L.geoJson(json_statesprovinces3, {
         attribution: '<a href=""></a>',
-        pane: 'pane_stateprovince3',
-        onEachFeature: pop_stateprovince3,
-        style: style_stateprovince3
+        pane: 'pane_statesprovinces3',
+        onEachFeature: pop_statesprovinces3,
+        style: style_statesprovinces3
     });
-        bounds_group.addLayer(layer_stateprovince3);
-        map.addLayer(layer_stateprovince3);
+        bounds_group.addLayer(layer_statesprovinces3);
+        map.addLayer(layer_statesprovinces3);
         function pop_institutions4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -527,7 +525,7 @@
         }
 
         function style_institutions4(feature) {
-            if (feature.properties['Count'] >= 1.000000 && feature.properties['Count'] <= 4.000000 ) {
+            if (feature.properties['Count'] >= 1.000000 && feature.properties['Count'] <= 3.000000 ) {
                 return {
                 pane: 'pane_institutions4',
                 radius: 1.6,
@@ -541,7 +539,7 @@
                 fillColor: 'rgba(247,251,255,1.0)',
             }
             }
-            if (feature.properties['Count'] >= 4.000000 && feature.properties['Count'] <= 11.000000 ) {
+            if (feature.properties['Count'] >= 3.000000 && feature.properties['Count'] <= 8.000000 ) {
                 return {
                 pane: 'pane_institutions4',
                 radius: 3.0,
@@ -552,10 +550,24 @@
                 lineJoin: 'miter',
                 weight: 1,
                 fillOpacity: 1,
-                fillColor: 'rgba(209,227,243,1.0)',
+                fillColor: 'rgba(216,231,245,1.0)',
             }
             }
-            if (feature.properties['Count'] >= 11.000000 && feature.properties['Count'] <= 22.000000 ) {
+            if (feature.properties['Count'] >= 8.000000 && feature.properties['Count'] <= 17.000000 ) {
+                return {
+                pane: 'pane_institutions4',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(176,210,232,1.0)',
+            }
+            }
+            if (feature.properties['Count'] >= 17.000000 && feature.properties['Count'] <= 29.000000 ) {
                 return {
                 pane: 'pane_institutions4',
                 radius: 5.0,
@@ -566,13 +578,13 @@
                 lineJoin: 'miter',
                 weight: 1,
                 fillOpacity: 1,
-                fillColor: 'rgba(154,200,225,1.0)',
+                fillColor: 'rgba(115,179,216,1.0)',
             }
             }
-            if (feature.properties['Count'] >= 22.000000 && feature.properties['Count'] <= 39.000000 ) {
+            if (feature.properties['Count'] >= 29.000000 && feature.properties['Count'] <= 45.000000 ) {
                 return {
                 pane: 'pane_institutions4',
-                radius: 7.0,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -580,13 +592,13 @@
                 lineJoin: 'miter',
                 weight: 1,
                 fillOpacity: 1,
-                fillColor: 'rgba(82,157,204,1.0)',
+                fillColor: 'rgba(62,142,196,1.0)',
             }
             }
-            if (feature.properties['Count'] >= 39.000000 && feature.properties['Count'] <= 83.000000 ) {
+            if (feature.properties['Count'] >= 45.000000 && feature.properties['Count'] <= 83.000000 ) {
                 return {
                 pane: 'pane_institutions4',
-                radius: 9.0,
+                radius: 8.0,
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -594,7 +606,7 @@
                 lineJoin: 'miter',
                 weight: 1,
                 fillOpacity: 1,
-                fillColor: 'rgba(28,108,177,1.0)',
+                fillColor: 'rgba(21,99,170,1.0)',
             }
             }
             if (feature.properties['Count'] >= 83.000000 && feature.properties['Count'] <= 150.000000 ) {
@@ -636,7 +648,7 @@
         });
         osmGeocoder.addTo(map);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'institutions<br /><table><tr><td style="text-align: center;"><img src="legend/institutions4_140.png" /></td><td>1 - 4</td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_4111.png" /></td><td>4 - 11</td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_11222.png" /></td><td>11 - 22</td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_22393.png" /></td><td>22 - 39</td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_39834.png" /></td><td>39 - 83</td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_831505.png" /></td><td>83 - 150</td></tr></table>': layer_institutions4,'state/province<br /><table><tr><td style="text-align: center;"><img src="legend/stateprovince3_00.png" /></td><td>0</td></tr><tr><td style="text-align: center;"><img src="legend/stateprovince3_1171.png" /></td><td>1 - 17</td></tr><tr><td style="text-align: center;"><img src="legend/stateprovince3_17662.png" /></td><td>17 - 66</td></tr><tr><td style="text-align: center;"><img src="legend/stateprovince3_661463.png" /></td><td>66 - 146</td></tr><tr><td style="text-align: center;"><img src="legend/stateprovince3_1462474.png" /></td><td>146 - 247</td></tr><tr><td style="text-align: center;"><img src="legend/stateprovince3_24712825.png" /></td><td>247 - 1282</td></tr><tr><td style="text-align: center;"><img src="legend/stateprovince3_128216266.png" /></td><td>1282 - 1626</td></tr></table>': layer_stateprovince3,'<img src="legend/countrydisputed2.png" /> countrydisputed': layer_countrydisputed2,'countrysubunit<br /><table><tr><td style="text-align: center;"><img src="legend/countrysubunit1_00.png" /></td><td>0</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunit1_1171.png" /></td><td>1 - 17</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunit1_17662.png" /></td><td>17 - 66</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunit1_661463.png" /></td><td>66 - 146</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunit1_1462474.png" /></td><td>146 - 247</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunit1_24712825.png" /></td><td>247 - 1282</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunit1_128216466.png" /></td><td>1282 - 1646</td></tr></table>': layer_countrysubunit1,'country<br /><table><tr><td style="text-align: center;"><img src="legend/country0_00.png" /></td><td>0</td></tr><tr><td style="text-align: center;"><img src="legend/country0_1171.png" /></td><td> 1 - 17 </td></tr><tr><td style="text-align: center;"><img src="legend/country0_17662.png" /></td><td> 17 - 66 </td></tr><tr><td style="text-align: center;"><img src="legend/country0_661463.png" /></td><td> 66 - 146 </td></tr><tr><td style="text-align: center;"><img src="legend/country0_1462474.png" /></td><td> 146 - 247 </td></tr><tr><td style="text-align: center;"><img src="legend/country0_24712825.png" /></td><td> 247 - 1282 </td></tr><tr><td style="text-align: center;"><img src="legend/country0_128216266.png" /></td><td> 1282 - 1626 </td></tr></table>': layer_country0,}).addTo(map);
+        L.control.layers(baseMaps,{'institutions<br /><table><tr><td style="text-align: center;"><img src="legend/institutions4_10300.png" /></td><td> 1.0 - 3.0 </td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_30801.png" /></td><td> 3.0 - 8.0 </td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_801702.png" /></td><td> 8.0 - 17.0 </td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_1702903.png" /></td><td> 17.0 - 29.0 </td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_2904504.png" /></td><td> 29.0 - 45.0 </td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_4508305.png" /></td><td> 45.0 - 83.0 </td></tr><tr><td style="text-align: center;"><img src="legend/institutions4_83015006.png" /></td><td> 83.0 - 150.0 </td></tr></table>': layer_institutions4,'statesprovinces<br /><table><tr><td style="text-align: center;"><img src="legend/statesprovinces3_00.png" /></td><td>0</td></tr><tr><td style="text-align: center;"><img src="legend/statesprovinces3_1181.png" /></td><td>1 - 18</td></tr><tr><td style="text-align: center;"><img src="legend/statesprovinces3_18642.png" /></td><td>18 - 64</td></tr><tr><td style="text-align: center;"><img src="legend/statesprovinces3_641493.png" /></td><td>64 - 149</td></tr><tr><td style="text-align: center;"><img src="legend/statesprovinces3_1492444.png" /></td><td>149 - 244</td></tr><tr><td style="text-align: center;"><img src="legend/statesprovinces3_24411995.png" /></td><td>244 - 1199</td></tr><tr><td style="text-align: center;"><img src="legend/statesprovinces3_119917006.png" /></td><td>1199 - 1700</td></tr></table>': layer_statesprovinces3,'countrysubunits<br /><table><tr><td style="text-align: center;"><img src="legend/countrysubunits2_00.png" /></td><td>0</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunits2_1181.png" /></td><td>1 -18</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunits2_18642.png" /></td><td>18 - 64</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunits2_641493.png" /></td><td>64 - 149</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunits2_1492444.png" /></td><td>149 - 244</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunits2_24411995.png" /></td><td>244 - 1199</td></tr><tr><td style="text-align: center;"><img src="legend/countrysubunits2_119917006.png" /></td><td>1199 - 1700</td></tr></table>': layer_countrysubunits2,'<img src="legend/countrydisputed1.png" /> countrydisputed': layer_countrydisputed1,'country<br /><table><tr><td style="text-align: center;"><img src="legend/country0_00.png" /></td><td>0</td></tr><tr><td style="text-align: center;"><img src="legend/country0_1181.png" /></td><td>1 - 18</td></tr><tr><td style="text-align: center;"><img src="legend/country0_18642.png" /></td><td>18 - 64</td></tr><tr><td style="text-align: center;"><img src="legend/country0_641493.png" /></td><td>64 - 149</td></tr><tr><td style="text-align: center;"><img src="legend/country0_1492444.png" /></td><td>149 - 244</td></tr><tr><td style="text-align: center;"><img src="legend/country0_24411995.png" /></td><td>244 - 1199</td></tr><tr><td style="text-align: center;"><img src="legend/country0_119917006.png" /></td><td>1199 - 1700</td></tr></table>': layer_country0,}).addTo(map);
         setBounds();
         map.addControl(new L.Control.Search({
             layer: layer_institutions4,
